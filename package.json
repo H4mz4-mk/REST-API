@@ -4,8 +4,7 @@
   "description": "",
   "main": "source/server.ts",
   "scripts": {
-    "build": "rm -rf build/ && prettier --write source/ && tsc",
-    "start:server": "nodemon build/server.js"
+    "start:server:and:build": "nodemon --watch \"source/**\" --ext \"ts,json\" --ignore \"source/**/*.spec.ts\" --exec \"ts-node source/server.ts\""
   },
   "author": "",
   "license": "ISC",
