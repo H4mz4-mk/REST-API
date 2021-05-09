@@ -37,7 +37,7 @@ router.use('/', sample_1.default);
 router.use(function (req, res, next) {
     var error = new Error('not-found');
     return res.status(404).json({
-        message: error.message
+        path: error.message
     });
 });
 // Create the server

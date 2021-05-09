@@ -2,20 +2,28 @@ import { Request, Response, NextFunction } from 'express';
 import logging from '../config/logging';
 
 const NAMESPACE = 'This is quick Test!!';
-const sampleHealthCheck = (req: Request, res: Response, next: NextFunction) => {
+const pathController = (req: Request, res: Response, next: NextFunction) => {
     logging.info(NAMESPACE, `Sample health check route called`);
 
     return res.status(200).json({
-        message: `You just entered ${req.params.string}`
+        path: '/'
     });
 };
 
-const secondHealthCheck = (req: Request, res: Response, next: NextFunction) => {
-    logging.info(NAMESPACE, `Second health check route called`);
+const secondPathController = (req: Request, res: Response, next: NextFunction) => {
+    logging.info(NAMESPACE, `Sample health check route called`);
 
     return res.status(200).json({
-        message: `You just entered /${req.params.firstString}/${req.params.secondString}`
+        path: `/${req.params.path}`
     });
 };
 
-export default { sampleHealthCheck, secondHealthCheck };
+const thirdPathController = (req: Request, res: Response, next: NextFunction) => {
+    logging.info(NAMESPACE, `Sample health check route called`);
+
+    return res.status(200).json({
+        path: `/${req.params.path}/${req.params.secondPath}`
+    });
+};
+
+export default { pathController, secondPathController, thirdPathController };

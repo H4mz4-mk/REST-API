@@ -5,16 +5,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var logging_1 = __importDefault(require("../config/logging"));
 var NAMESPACE = 'This is quick Test!!';
-var sampleHealthCheck = function (req, res, next) {
+var pathController = function (req, res, next) {
     logging_1.default.info(NAMESPACE, "Sample health check route called");
     return res.status(200).json({
-        message: "You just entered " + req.params.string
+        path: '/'
     });
 };
-var secondHealthCheck = function (req, res, next) {
-    logging_1.default.info(NAMESPACE, "Second health check route called");
+var secondPathController = function (req, res, next) {
+    logging_1.default.info(NAMESPACE, "Sample health check route called");
     return res.status(200).json({
-        message: "You just entered /" + req.params.firstString + "/" + req.params.secondString
+        path: "/" + req.params.path
     });
 };
-exports.default = { sampleHealthCheck: sampleHealthCheck, secondHealthCheck: secondHealthCheck };
+var thirdPathController = function (req, res, next) {
+    logging_1.default.info(NAMESPACE, "Sample health check route called");
+    return res.status(200).json({
+        path: "/" + req.params.path + "/" + req.params.secondPath
+    });
+};
+exports.default = { pathController: pathController, secondPathController: secondPathController, thirdPathController: thirdPathController };

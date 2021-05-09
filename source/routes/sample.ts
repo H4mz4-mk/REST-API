@@ -3,7 +3,9 @@ import controller from '../controllers/sample';
 
 const router = express.Router();
 
-router.get('/:string', controller.sampleHealthCheck);
-router.get('/:firstString/:secondString', controller.secondHealthCheck);
+router.get('/', controller.pathController);
+router.get('/:path', controller.secondPathController);
+router.get('/:path/:secondPath', controller.thirdPathController);
+
 
 export = router;

@@ -2,7 +2,7 @@ import express, { Router } from 'express';
 import bodyParser from 'body-parser';
 import logging from './config/logging';
 import config from './config/config';
-import sampleRoutes from './routes/sample';
+import routing from './routes/sample';
 
 const NAMESPACE = 'Server';
 const router = express();
@@ -34,13 +34,13 @@ router.use((req, res, next) => {
 });
 
 // Routes
-router.use('/', sampleRoutes);
+router.use('/', routing);
 
 // Error Handling
 router.use((req, res, next) => {
     const error = new Error('not-found');
     return res.status(404).json({
-        message: error.message
+        path: error.message
     });
 });
 
